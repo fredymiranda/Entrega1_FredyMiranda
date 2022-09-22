@@ -1,0 +1,28 @@
+{% extends "AppIntermedia/inicio.html" %}
+
+{% block contenido %}
+<section class="bg-light" id="crearServicios">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h2>Creación de Servicios</h2>
+                <p class="lead">En esta sección podras encontrar un formulario que te permitirá crear el listado de servicios que ofreces a tus clientes.</p>
+                <p>
+                    {% if formulario.errors %}
+                    <p style="color:red">Hay error en los datos ingresados, valide por favor.</p>
+                    {% endif %}
+
+                    <form action="" method="POST">{% csrf_token %}
+                        <table>
+                            {{formulario.as_table}}
+                        </table>
+                        <p>
+                            <br><input type="submit", value="Enviar">
+                        </p>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

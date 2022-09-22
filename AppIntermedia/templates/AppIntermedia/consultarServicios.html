@@ -1,0 +1,59 @@
+{% extends "AppIntermedia/inicio.html" %}
+
+{% block contenido %}
+<section id="consultaServicios">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h2>Consulta de Servicios</h2>
+                <p class="lead">En esta sección podras consultar los servicios con que cuenta actualmente tu compañia por <strong><u>palabra clave</u></strong> dentro de la descripción.</p>
+                <form action="/EntregaIntermedia/Consulta/Servicios/Resultados/" method="get">
+                <input type="text" name="descripcionFormulario" id="id_descripcionFormulario">
+                <br><br>
+                <input type="submit", value="Buscar">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block respuestaConsulta %}
+
+{% if descripcion %}
+
+<section id="resultadoServicios">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h3>Texto en la descripión buscado: <strong>{{descripcion}}</strong></h3>
+                <p class="lead">Resultados:</p>
+                {% for servicio in servicios %}
+                <ul>
+                    <li><strong>Código servicio: </strong>{{servicio.codigoServicio}}</li>
+                    <li><strong>Nombre servicio: </strong>{{servicio.nombreServicio}}</li>
+                    <li><strong>Descripción servicio: </strong>{{servicio.descripcionServicio}}</li>
+                    <li><strong>Unidad de facturación: </strong>{{servicio.unidadFacturacion}}</li>
+                    <li><strong>Costo unidad: </strong>{{servicio.costoUnidad}}</li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+{% if mensaje %}
+<section id="resultadoServicios">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <p class="lead" style="color:firebrick"><strong>{{mensaje}}</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

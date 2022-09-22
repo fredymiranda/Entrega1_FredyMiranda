@@ -1,0 +1,59 @@
+{% extends "AppIntermedia/inicio.html" %}
+
+{% block contenido %}
+<section id="consultaSucursales">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h2>Consulta de Sucursales</h2>
+                <p class="lead">En esta sección podras consultar las sucursales con que cuenta actualmente tu compañia por <strong><u>ciudad</u></strong>.</p>
+                <form action="/EntregaIntermedia/Consulta/Sucursales/Resultados/" method="get">
+                <input type="text" name="ciudadFormulario" id="id_ciudadFormulario">
+                <br><br>
+                <input type="submit", value="Buscar">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block respuestaConsulta %}
+
+{% if ciudad %}
+
+<section id="resultadoSucursales">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h3>Ciudad consultada: <strong>{{ciudad}}</strong></h3>
+                <p class="lead">Resultados:</p>
+                {% for sucursal in sucursales %}
+                <ul>
+                    <li><strong>Pais: </strong>{{sucursal.pais}}</li>
+                    <li><strong>Ciudad: </strong>{{sucursal.ciudad}}</li>
+                    <li><strong>Dirección: </strong>{{sucursal.direccion}}</li>
+                    <li><strong>Código sucursal: </strong>{{sucursal.codigoSucursal}}</li>
+                    <li><strong>Correo sucursal: </strong>{{sucursal.correoSucursal}}</li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+{% if mensaje %}
+<section id="resultadoSucursales">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <p class="lead" style="color:firebrick"><strong>{{mensaje}}</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

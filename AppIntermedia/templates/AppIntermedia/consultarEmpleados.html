@@ -1,0 +1,59 @@
+{% extends "AppIntermedia/inicio.html" %}
+
+{% block contenido %}
+<section id="consultaEmpleados">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h2>Consulta de Empleados</h2>
+                <p class="lead">En esta sección podras consultar a las personas que aman trabajar en tu compañia. La busqueada se realizará por <strong><u>nombre</u></strong> del empleado.</p>
+                <form action="/EntregaIntermedia/Consulta/Empleados/Resultados/" method="get">
+                <input type="text" name="nombreFormulario" id="id_nombreFormulario">
+                <br><br>
+                <input type="submit", value="Buscar">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block respuestaConsulta %}
+
+{% if nombre %}
+
+<section id="resultadoEmpleados">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h3>Nombre de empleado buscado: <strong>{{nombre}}</strong></h3>
+                <p class="lead">Resultados:</p>
+                {% for empleado in empleados %}
+                <ul>
+                    <li><strong>Nombres: </strong>{{empleado.nombres}}</li>
+                    <li><strong>Apellidos: </strong>{{empleado.apellidos}}</li>
+                    <li><strong>Código empleado: </strong>{{empleado.codigoEmpleado}}</li>
+                    <li><strong>Número de identificación: </strong>{{empleado.numeroIdentificacion}}</li>
+                    <li><strong>Correo: </strong>{{empleado.correo}}</li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+{% if mensaje %}
+<section id="resultadoEmpleados">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <p class="lead" style="color:firebrick"><strong>{{mensaje}}</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

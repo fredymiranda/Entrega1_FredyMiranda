@@ -1,0 +1,10 @@
+{% extends "AppIntermedia/plantilla.html" %}
+
+{% block enlaces %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'CrearSucursales' %}">Crear Sucursales</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'CrearServicios' %}">Crear Servicios</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'CrearEmpleados' %}">Crear Empleados</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'ConsultarSucursales' %}">Consultar Sucursales</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'ConsultarServicios' %}">Consultar Servicios</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'ConsultarEmpleados' %}">Consultar Empleados</a></li>
+{% endblock %}

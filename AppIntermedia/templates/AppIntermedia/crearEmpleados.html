@@ -1,0 +1,28 @@
+{% extends "AppIntermedia/inicio.html" %}
+
+{% block contenido %}
+<section id="crearEmpleados">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h2>Creación de Empleados</h2>
+                <p class="lead">En esta sección podras encontrar un formulario para registrar a las personas que aman trabajar en tu compañia.</p>
+                <p>
+                    {% if formulario.errors %}
+                    <p style="color:red">Hay error en los datos ingresados, valide por favor.</p>
+                    {% endif %}
+
+                    <form action="" method="POST">{% csrf_token %}
+                        <table>
+                            {{formulario.as_table}}
+                        </table>
+                        <p>
+                            <br><input type="submit", value="Enviar">
+                        </p>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
